@@ -1,0 +1,168 @@
+// ---------- Variables ----------
+
+$red: #e50914
+
+// DARK THEME
+$dark-bg: #0f0f0f
+$dark-text: #ffffff
+$dark-muted: #cccccc
+$dark-card: #1a1a1a
+$dark-border: #333
+
+// LIGHT THEME
+$light-bg: #f9f9f9
+$light-text: #111
+$light-muted: #444
+$light-card: #ffffff
+$light-border: #ccc
+
+// Shared
+$radius: 12px
+$transition: 0.3s ease
+
+// ---------- Reset de base ----------
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+body
+  font-family: 'Ubuntu', sans-serif
+
+// ---------- Container principal ----------
+
+.app-container
+  min-height: 100vh
+  padding: 2rem
+  display: flex
+  flex-direction: column
+  align-items: center
+  transition: background $transition, color $transition
+
+  header
+    width: 100%
+    max-width: 800px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 2rem
+
+    h1
+      color: $red
+      font-size: 2.2rem
+      font-weight: 700
+
+    .theme-toggle
+      padding: 0.5rem 1rem
+      background: none
+      border: 1px solid
+      border-radius: $radius
+      font-size: 0.95rem
+      cursor: pointer
+      transition: all $transition
+      font-weight: bold
+
+// ---------- Zone de recherche ----------
+
+.search-container
+  display: flex
+  flex-direction: column
+  gap: 1rem
+  width: 100%
+  max-width: 600px
+  margin-bottom: 2rem
+  align-items: center
+
+  input
+    width: 100%
+    padding: 0.8rem 1rem
+    font-size: 1rem
+    border-radius: $radius
+    border: 1px solid
+    outline: none
+    transition: all $transition
+
+    &:focus
+      box-shadow: 0 0 0 2px $red
+
+  button
+    background-color: $red
+    color: white
+    border: none
+    padding: 0.8rem 1.2rem
+    border-radius: $radius
+    font-weight: bold
+    font-size: 1rem
+    cursor: pointer
+    transition: background-color $transition
+
+    &:hover
+      background-color: $dark-bg
+
+    &:disabled
+      background-color: gray
+      cursor: not-allowed
+
+// ---------- Paroles et erreurs ----------
+
+.error
+  color: $red
+  font-weight: 600
+  margin-top: 1rem
+
+.lyrics
+  background: rgba(0, 0, 0, 0.05)
+  padding: 1.5rem
+  border-radius: $radius
+  max-width: 700px
+  width: 100%
+  white-space: pre-wrap
+  line-height: 1.6
+  transition: background $transition, color $transition
+
+// ---------- Responsive ----------
+
+@media screen and (max-width: 600px)
+  .search-container
+    input
+      font-size: 0.95rem
+
+    button
+      font-size: 0.95rem
+
+// ---------- Thèmes ----------
+
+.app-container.dark
+  background: $dark-bg
+  color: $dark-text
+
+  input
+    background: $dark-card
+    color: $dark-text
+    border-color: $dark-border
+
+  .theme-toggle
+    color: $dark-text
+    border-color: $dark-border
+
+  .lyrics
+    background: $dark-card
+    color: $dark-muted
+
+.app-container.light
+  background: $light-bg
+  color: $light-text
+
+  input
+    background: $light-card
+    color: $light-text
+    border-color: $light-border
+
+  .theme-toggle
+    color: $light-text
+    border-color: $light-border
+
+  .lyrics
+    background: $light-card
+    color: $light-muted
